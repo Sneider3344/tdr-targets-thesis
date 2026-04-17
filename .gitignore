@@ -1,0 +1,9 @@
+data/raw/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+env/
+.vscode/
+.idea/
+*.swp
