@@ -1,0 +1,38 @@
+# 02 — Gene Mapper: interoperabilidad de identificadores
+
+Resuelve la correspondencia entre identificadores OrthoMCL y UniProt para
+cada especie del proyecto, usando GeneMapper (herramienta desarrollada en
+el laboratorio, no incluida en este repositorio; ver cita en la tesis).
+
+## Estrategia de mapeo
+
+Por cada gen de OrthoMCL se busca su equivalente en UniProt, en este orden
+de prioridad:
+
+1. Coincidencia exacta de ID
+2. Coincidencia por hash MD5 de la secuencia
+3. Coincidencia por BLAST (cobertura mínima 0.99)
+
+Los resultados se separan en tres archivos: `mapped`, `unmapped` y
+`problematic`.
+
+## Scripts
+
+- `map_orthomcl_to_uniprot.py`: ejecuta el mapeo completo para una especie.
+- `clean_mapped_output.py`: se queda con las columnas finales
+  (`OrthoMCL_ID`, `Uniprot_ID`, `Length`) para el análisis posterior.
+
+## Uso
+
+El proceso se corrió individualmente para cada especie del proyecto,
+cambiando `SPECIES_CODE` (y `UNIPROT_TAXON_ID` en el script de mapeo) al
+inicio de cada script.
+
+```
+SPECIES_CODE = "bmaa"
+```
+
+## Dependencias no incluidas
+
+`GeneMapper` y `seqpandas` son herramientas del laboratorio ya citadas en
+la tesis; no se incluyen en este repositorio.
