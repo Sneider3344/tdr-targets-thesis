@@ -1,38 +1,38 @@
-# 02 — Gene Mapper: interoperabilidad de identificadores
+# 04 — Gene Mapper: identifier interoperability
 
-Resuelve la correspondencia entre identificadores OrthoMCL y UniProt para
-cada especie del proyecto, usando GeneMapper (herramienta desarrollada en
-el laboratorio, no incluida en este repositorio; ver cita en la tesis).
+Resolves the correspondence between OrthoMCL and UniProt identifiers for
+each species in the project, using GeneMapper (an in-house tool developed
+in the lab, not included in this repository; see citation in the thesis).
 
-## Estrategia de mapeo
+## Mapping strategy
 
-Por cada gen de OrthoMCL se busca su equivalente en UniProt, en este orden
-de prioridad:
+For each OrthoMCL gene, we look for its match in UniProt, in this order
+of priority:
 
-1. Coincidencia exacta de ID
-2. Coincidencia por hash MD5 de la secuencia
-3. Coincidencia por BLAST (cobertura mínima 0.99)
+1. Exact ID match
+2. Sequence hash (MD5) match
+3. BLAST match (minimum coverage 0.99)
 
-Los resultados se separan en tres archivos: `mapped`, `unmapped` y
+Results are split into three files: `mapped`, `unmapped`, and
 `problematic`.
 
 ## Scripts
 
-- `map_orthomcl_to_uniprot.py`: ejecuta el mapeo completo para una especie.
-- `clean_mapped_output.py`: se queda con las columnas finales
-  (`OrthoMCL_ID`, `Uniprot_ID`, `Length`) para el análisis posterior.
+- `map_orthomcl_to_uniprot.py`: runs the full mapping for one species.
+- `clean_mapped_output.py`: keeps only the final columns
+  (`OrthoMCL_ID`, `Uniprot_ID`, `Length`) for downstream analysis.
 
-## Uso
+## Usage
 
-El proceso se corrió individualmente para cada especie del proyecto,
-cambiando `SPECIES_CODE` (y `UNIPROT_TAXON_ID` en el script de mapeo) al
-inicio de cada script.
+This was run individually for each species in the project by changing
+`SPECIES_CODE` (and `UNIPROT_TAXON_ID` in the mapping script) at the top
+of each script.
 
 ```
 SPECIES_CODE = "bmaa"
 ```
 
-## Dependencias no incluidas
+## Dependencies not included
 
-`GeneMapper` y `seqpandas` son herramientas del laboratorio ya citadas en
-la tesis; no se incluyen en este repositorio.
+`GeneMapper` and `seqpandas` are lab tools already cited in the thesis;
+they are not included in this repository.
