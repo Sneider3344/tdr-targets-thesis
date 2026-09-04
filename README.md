@@ -8,7 +8,7 @@ Bioinformatics pipeline developed for the identification and curation of therape
 
 Neglected tropical diseases affect over one billion people worldwide, yet drug development remains underfunded. Computational target identification — combining orthology data, structural predictions, and multi-layer biological networks — allows prioritising proteins that are essential to the pathogen, absent or dissimilar in the human host, and structurally well-characterised enough to be druggable.
 
-This pipeline processes data from 29 parasite and model-organism genomes in the network, including *Trypanosoma cruzi* (CL Brener and Dm28c), *Brugia malayi*, *Onchocerca volvulus*, *Leishmania* spp., *Plasmodium falciparum*, *Homo sapiens*, and *Mus musculus*, among others.
+This pipeline processes data from 29 parasite and model-organism genomes in the network, including *Trypanosoma cruzi* (CL Brener and Dm28c), *Brugia malayi*, *Onchocerca volvulus*, *Leishmania* spp., *Plasmodium falciparum*, *Homo sapiens*, and *Mus musculus*, among others. Five species (*Loa loa*, *Onchocerca volvulus*, *Echinococcus granulosus*, *Klebsiella pneumoniae*, *Staphylococcus aureus*) are not part of OrthoMCL's native catalog; their orthology groups are assigned via Diamond BLASTp against the existing network.
 
 ---
 
@@ -16,8 +16,7 @@ This pipeline processes data from 29 parasite and model-organism genomes in the 
 
 ```
 tdr-targets-thesis/
-├── 01_orthomcl_comparison/          # OrthoMCL v6 vs v7 group stability analysis
-├── 02_orthomcl_version_comparison/  # Model genome benchmarking (scer, tbrt)
+├── 02_orthomcl_version_comparison/  # Model genome benchmarking (scer, tbrt): OrthoMCL v6 vs v7
 ├── 03_alphafold_pfam/               # AlphaFold confidence × PFAM domain integration
 │   └── scripts/species_specific/    # Non-standard ID mapping pipelines
 ├── 04_gene_mapper/                  # OrthoMCL <-> UniProt identifier resolution
@@ -29,6 +28,8 @@ tdr-targets-thesis/
 ├── .gitignore
 └── README.md
 ```
+
+Numbering starts at `02`: an earlier module (`01_orthomcl_comparison`) compared native OrthoMCL v6/v7 group files for the five non-core species, an approach later superseded by the Diamond BLASTp assignment described above, and was removed.
 
 Each module has its own README with a full usage guide. Modules are numbered in the order they were developed; 04-06 depend on outputs from Gene Mapper (04) and, for 06, on the candidate lists produced in 05.
 
