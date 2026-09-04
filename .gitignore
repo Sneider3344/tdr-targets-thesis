@@ -7,3 +7,28 @@ env/
 .vscode/
 .idea/
 *.swp
+
+# Third-party tools with their own git repos (avoid embedded-repo issues)
+PocketVec/pocketvec/
+
+# Large downloaded/generated data (BioLiP, ligand databases, PDB/AlphaFold structures)
+BioLiP.txt.gz
+ligand.tsv.gz
+ligand_summary.txt.gz
+*.pdb
+*.cif
+alphafold_pdbs/
+pdb_referencias/
+pdb_cristalizados/
+
+# PocketVec/US-align intermediate and output files
+*.mol2
+*.sd
+usalign_outputs/
+mol2_receptores/
+sd_centroides/
+pocketvec_outputs/
+msa_temp/
+
+# Large intermediate tables (regenerable from the scripts, not source data)
+*.tsv.gz
